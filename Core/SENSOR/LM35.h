@@ -1,13 +1,10 @@
-/*
- * LM35.h
- *
- *  Created on: Apr 6, 2024
- *      Author: LE TUAN THANH
- */
+#ifndef LM35_H
+#define LM35_H
 
-#ifndef SENSOR_LM35_H_
-#define SENSOR_LM35_H_
+#include "stm32f1xx_hal.h"
 
+// Function prototypes
+void LM35_Init(ADC_HandleTypeDef *hadc);
+float LM35_ReadTemperature(void);
 
-
-#endif /* SENSOR_LM35_H_ */
+#endif /* LM35_H */
