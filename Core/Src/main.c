@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "LM35.h"
+#inlcude "LM393.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,7 +98,8 @@ int main(void)
   MX_USART1_UART_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-
+LM35_Init(&hadc1);
+LM393_Init(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -107,6 +109,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    float temperature = LM35_ReadTemperature();
+   float humidity = LM393_ReadHumidity();
   }
   /* USER CODE END 3 */
 }
