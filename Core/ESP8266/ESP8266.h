@@ -1,13 +1,13 @@
-/*
- * ESP8266.h
- *
- *  Created on: Apr 6, 2024
- *      Author: LE TUAN THANH
- */
 
-#ifndef ESP8266_ESP8266_H_
-#define ESP8266_ESP8266_H_
+#ifndef ESP8266_H_
+#define ESP8266_H_
 
+#include "stm32f1xx_hal.h"
+#include <stdio.h>
+#include <string.h>
 
+extern UART_HandleTypeDef huart1;
 
-#endif /* ESP8266_ESP8266_H_ */
+void UART_SendData(int temperature, int humidity);
+
+#endif /* ESP8266_H_ */
