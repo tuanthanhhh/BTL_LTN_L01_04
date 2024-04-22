@@ -22,7 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "LM35.h"
-#inlcude "LM393.h"
+#include "LM393.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

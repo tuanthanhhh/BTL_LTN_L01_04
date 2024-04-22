@@ -1,0 +1,1 @@
+Core/SENSOR/LM35.o: ../Core/SENSOR/LM35.c
