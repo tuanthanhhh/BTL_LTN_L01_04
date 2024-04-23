@@ -16,7 +16,7 @@ S_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Core/Startup/%.o: ../Core/Startup/%.s Core/Startup/subdir.mk
-	arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -I"C:/Users/LE TUAN THANH/STM32CubeIDE/workspace_1.13.1/BTL_LTN_L01_04/Core/LCD" -I"C:/Users/LE TUAN THANH/STM32CubeIDE/workspace_1.13.1/BTL_LTN_L01_04/Core/SENSOR" -I"C:/Users/LE TUAN THANH/STM32CubeIDE/workspace_1.13.1/BTL_LTN_L01_04/Core/ESP8266" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@" "$<"
 
 clean: clean-Core-2f-Startup
 

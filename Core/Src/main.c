@@ -98,8 +98,8 @@ int main(void)
   MX_USART1_UART_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-LM35_Init(&hadc1);
-LM393_Init(&hadc1);
+  LM35_Init(&hadc1);
+  LM393_Init(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */

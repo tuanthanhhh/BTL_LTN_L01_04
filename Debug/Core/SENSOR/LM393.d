@@ -1,4 +1,4 @@
-Core/SENSOR/LM35.o: ../Core/SENSOR/LM35.c ../Core/SENSOR/LM35.h \
+Core/SENSOR/LM393.o: ../Core/SENSOR/LM393.c ../Core/SENSOR/LM393.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -25,7 +25,7 @@ Core/SENSOR/LM35.o: ../Core/SENSOR/LM35.c ../Core/SENSOR/LM35.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-../Core/SENSOR/LM35.h:
+../Core/SENSOR/LM393.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:

@@ -1,0 +1,2 @@
+../Core/SENSOR/LM35.c:5:6:LM35_Init	1
+../Core/SENSOR/LM35.c:9:7:LM35_ReadTemperature	2

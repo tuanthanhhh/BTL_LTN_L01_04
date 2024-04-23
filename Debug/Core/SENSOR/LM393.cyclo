@@ -1,0 +1,2 @@
+../Core/SENSOR/LM393.c:5:6:LM393_Init	1
+../Core/SENSOR/LM393.c:9:7:LM393_ReadHumidity	1
