@@ -1,82 +1,111 @@
-/*
- * lcd.c
- *
- *  Created on: Apr 13, 2024
- *      Author: Admin
- */
-
 #include "LCD.h"
 
-extern I2C_HandleTypeDef hi2c2;
+#include "stm32f1xx.h"
 
-#define SLAVE_ADDRESS_LCD 0x4E
+#define LCD_RS_PIN 		GPIO_PIN_9
+#define LCD_RS_PORT 	GPIOB
+#define LCD_RW_PIN 		GPIO_PIN_10
+#define LCD_RW_PORT 	GPIOB
+#define LCD_EN_PIN 		GPIO_PIN_11
+#define LCD_EN_PORT 	GPIOB
+#define D4_PIN 			GPIO_PIN_12
+#define D4_PORT			GPIOB
+#define D5_PIN 			GPIO_PIN_13
+#define D5_PORT 		GPIOB
+#define D6_PIN 			GPIO_PIN_14
+#define D6_PORT 		GPIOB
+#define D7_PIN 			GPIO_PIN_15
+#define D7_PORT 		GPIOB
 
-void LCD_SEND_CMD(char cmd)
+#define LCD_CLEAR_DISPLAY 0x01
+#define LCD_FUNCTION_SET  0x20
+
+void send_to_lcd (char data, int rs)
 {
-	char data_u, data_l;
-	uint8_t data_t[4];
-	data_u = cmd & 0xF0;
-	data_l = ((cmd<<4) & 0xF0);
-	data_t[0] = data_u|0x0C;
-	data_t[1] = data_u|0x08;
-	data_t[2] = data_u|0x0C;
-	data_t[3] = data_u|0x08;
-	HAL_I2C_Master_Transmit (&hi2c2, SLAVE_ADDRESS_LCD,(uint8_t *) data_t, 4, 100);
+	HAL_GPIO_WritePin(LCD_RS_PORT, LCD_RS_PIN, rs);
+
+	HAL_GPIO_WritePin(D4_PORT, D4_PIN, (data>>0)&0x01);
+	HAL_GPIO_WritePin(D5_PORT, D5_PIN, (data>>1)&0x01);
+	HAL_GPIO_WritePin(D6_PORT, D6_PIN, (data>>2)&0x01);
+	HAL_GPIO_WritePin(D7_PORT, D7_PIN, (data>>3)&0x01);
+
+	HAL_GPIO_WritePin(LCD_EN_PORT, LCD_EN_PIN, 1);
+	HAL_GPIO_WritePin(LCD_EN_PORT, LCD_EN_PIN, 0);
 }
 
-void LCD_SEND_DATA (char data)
+void lcd_cmd(char cmd)
 {
-	char data_u, data_l;
-	uint8_t data_t[4];
-	data_u = data & 0xF0;
-	data_l = ((data<<4) & 0xF0);
-	data_t[0] = data_u|0x0D;
-	data_t[1] = data_u|0x09;
-	data_t[2] = data_u|0x0D;
-	data_t[3] = data_u|0x09;
-	HAL_I2C_Master_Transmit (&hi2c2, SLAVE_ADDRESS_LCD,(uint8_t *) data_t, 4, 100);
+	char datagui;
+	datagui = ((cmd>>4)&0x0f);
+	send_to_lcd(datagui, 0);
+
+	HAL_Delay(5);
+	datagui = ((cmd)&0x0f);
+	send_to_lcd(datagui, 0);
 }
 
-void LCD_INIT (void)
+void lcd_data(char data)
 {
-	LCD_SEND_CMD (0x33);
-	LCD_SEND_CMD (0x32);
-	HAL_Delay(50);
-	LCD_SEND_CMD (0x28);
-	HAL_Delay(50);
-	LCD_SEND_CMD (0x01);
-	HAL_Delay(50);
-	LCD_SEND_CMD (0x06);
-	HAL_Delay(50);
-	LCD_SEND_CMD (0x0c);
-	HAL_Delay(50);
-	LCD_SEND_CMD (0x02);
-	HAL_Delay(50);
-	LCD_SEND_CMD (0x80);
+	char datagui;
+	datagui = ((data>>4)&0x0f);
+	send_to_lcd(datagui, 1);
+	datagui = ((data)&0x0f);
+	send_to_lcd(datagui, 1);
 }
 
-void LCD_SEND_STRING(char *str)
+void lcd_clear(void)
 {
-	while (*str) LCD_SEND_DATA (*str++);
+	lcd_cmd(LCD_CLEAR_DISPLAY);
+	HAL_Delay(2);
 }
 
-void LCD_CLEAR (void)
+void lcd_cursor(int row, int col)
 {
-	LCD_SEND_CMD (0x01);
-}
-
-void LCD_PUT_CURSOR (int row, int col)
-{
-	uint8_t pos_Addr;
-	if(row ==1)
+	switch (row)
 	{
-		pos_Addr = 0x80 + row - 1 + col;
+	case 0:
+		col |= 0x80;
+		break;
+	case 1:
+		col |= 0xC0;
+		break;
 	}
-	else
-	{
-		pos_Addr = 0x80 | (0x40 + col);
-	}
-	LCD_SEND_CMD(pos_Addr);
+	lcd_cmd(col);
 }
 
+void lcd_init(void)
+{
+	HAL_Delay(50);
+	lcd_cmd(0x33);
 
+	//HAL_Delay(5);
+	//lcd_cmd(0x30);
+
+	HAL_Delay(5);
+	lcd_cmd(0x32);
+
+
+	//HAL_Delay(10);
+//	lcd_cmd(LCD_FUNCTION_SET);
+
+	HAL_Delay(10);
+	lcd_cmd(0x28);
+
+//	HAL_Delay(5);
+//	lcd_cmd(0x08);
+
+	HAL_Delay(5);
+	lcd_cmd(LCD_CLEAR_DISPLAY);
+
+
+	HAL_Delay(5);
+	lcd_cmd(0x0C);
+	HAL_Delay(5);
+	lcd_cmd(0x06);
+
+}
+
+void lcd_string(char *str)
+{
+	while (*str) lcd_data(*str++);
+}

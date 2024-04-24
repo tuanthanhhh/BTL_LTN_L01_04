@@ -55,6 +55,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 BTL_LTN_L01_04.list \
 
+OBJCOPY_HEX += \
+BTL_LTN_L01_04.hex \
+
 
 # All Target
 all: main-build
@@ -78,12 +81,17 @@ BTL_LTN_L01_04.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+BTL_LTN_L01_04.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "BTL_LTN_L01_04.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) BTL_LTN_L01_04.elf BTL_LTN_L01_04.list BTL_LTN_L01_04.map default.size.stdout
+	-$(RM) BTL_LTN_L01_04.elf BTL_LTN_L01_04.hex BTL_LTN_L01_04.list BTL_LTN_L01_04.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

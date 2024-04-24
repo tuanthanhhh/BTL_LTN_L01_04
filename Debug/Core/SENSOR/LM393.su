@@ -1,2 +1,2 @@
 ../Core/SENSOR/LM393.c:5:6:LM393_Init	16	static
-../Core/SENSOR/LM393.c:9:7:LM393_ReadHumidity	16	static
+../Core/SENSOR/LM393.c:9:7:LM393_ReadHumidity	24	static
