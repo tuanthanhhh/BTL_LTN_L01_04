@@ -110,7 +110,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
    int temperature = LM35_ReadTemperature();
-   int humidity = LM393_ReadHumidity();
    UART_SendData(20, 30);
    HAL_Delay(2000);
   }
