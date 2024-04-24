@@ -23,7 +23,7 @@ float LM393_ReadHumidity(void) {
     HAL_ADC_Stop(hadc_ptr);
 
     // Convert ADC value to soil humidity (calibration dependent)
-    humidity = (((float)adc_value / 4095.0f) * 3.3f) * 100.0f;
+    humidity = ((float)adc_value / 4095.0f) * 100.0f;
 
     return humidity;
 }
