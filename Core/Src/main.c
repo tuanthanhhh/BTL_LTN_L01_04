@@ -109,7 +109,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    float temperature = LM35_ReadTemperature();
+   float temperature = LM35_ReadTemperature();
    float humidity = LM393_ReadHumidity();
   }
   /* USER CODE END 3 */
