@@ -107,17 +107,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-<<<<<<< HEAD
 	  lcd_clear();
 	  lcd_cursor(0, 0);
 	  lcd_string("helllo");
 	  HAL_Delay(2000);
-=======
-   int temperature = LM35_ReadTemperature();
-   int humidity = LM393_ReadHumidity();
-   UART_SendData(20, 30);
-   HAL_Delay(2000);
->>>>>>> e4fb89599d7b258d3254131c63449e960c93ffb1
   }
   /* USER CODE END 3 */
 }

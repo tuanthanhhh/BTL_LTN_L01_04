@@ -9,12 +9,8 @@ void LM393_Init(ADC_HandleTypeDef *hadc) {
 float LM393_ReadHumidity(void) {
     uint16_t adc_value = 0;
     float humidity = 0.0;
-<<<<<<< HEAD
     float Vout = 0;
 
-=======
-    float voltage = 0.0;
->>>>>>> e4fb89599d7b258d3254131c63449e960c93ffb1
     // Start ADC conversion
     HAL_ADC_Start(hadc_ptr);
 
@@ -28,13 +24,9 @@ float LM393_ReadHumidity(void) {
     HAL_ADC_Stop(hadc_ptr);
 
     // Convert ADC value to soil humidity (calibration dependent)
-<<<<<<< HEAD
     Vout = ((float)adc_value / 4095.0f) * 3.3f;
     humidity = (3.0f-Vout)/0.02f;
-=======
-    voltage = ((float)adc_value * 5 / 4095.0f) * 100.0f;
-    humidity = (1 - ((voltage - 1.9f) / (5 - 1.9f)) ) * 100.0f;
->>>>>>> e4fb89599d7b258d3254131c63449e960c93ffb1
+
 
     return humidity;
 }
