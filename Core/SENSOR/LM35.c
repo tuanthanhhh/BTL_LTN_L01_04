@@ -12,10 +12,12 @@ float LM35_ReadTemperature(void) {
 
     // Start ADC conversion
     HAL_ADC_Start(hadc_ptr);
+    HAL_ADC_PollForConversion(hadc_ptr, 1000);
 
     adc_value = HAL_ADC_GetValue(hadc_ptr);
 
-    temperature = (float)adc_value * 3.3f / 4095.0f * 100.0f;
+    HAL_ADC_Stop(hadc_ptr);
+    temperature = (((float)adc_value/4095)*3.3f)*100;
 
     return temperature;
 }

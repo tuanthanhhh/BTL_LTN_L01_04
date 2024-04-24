@@ -109,8 +109,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-   float temperature = LM35_ReadTemperature();
-   float humidity = LM393_ReadHumidity();
+   int temperature = LM35_ReadTemperature();
+   UART_SendData(20, 30);
+   HAL_Delay(2000);
   }
   /* USER CODE END 3 */
 }

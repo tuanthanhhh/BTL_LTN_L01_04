@@ -1,0 +1,6 @@
+../Core/LCD/LCD.c:14:6:LCD_SEND_CMD	32	static
+../Core/LCD/LCD.c:27:6:LCD_SEND_DATA	32	static
+../Core/LCD/LCD.c:40:6:LCD_INIT	8	static
+../Core/LCD/LCD.c:58:6:LCD_SEND_STRING	16	static
+../Core/LCD/LCD.c:63:6:LCD_CLEAR	8	static
+../Core/LCD/LCD.c:68:6:LCD_PUT_CURSOR	24	static
