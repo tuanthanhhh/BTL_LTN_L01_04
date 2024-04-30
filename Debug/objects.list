@@ -2,6 +2,7 @@
 "./Core/LCD/LCD.o"
 "./Core/SENSOR/LM35.o"
 "./Core/SENSOR/LM393.o"
+"./Core/SENSOR/SENSOR.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32f1xx_hal_msp.o"
 "./Core/Src/stm32f1xx_it.o"

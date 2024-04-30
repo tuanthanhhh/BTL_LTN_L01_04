@@ -1,0 +1,4 @@
+../Core/SENSOR/SENSOR.c:8:6:adc_Init	16	static
+../Core/SENSOR/SENSOR.c:12:8:read_sensor	8	static
+../Core/SENSOR/SENSOR.c:20:7:get_Temperature	24	static
+../Core/SENSOR/SENSOR.c:27:7:get_Humidity	24	static

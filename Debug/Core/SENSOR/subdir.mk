@@ -6,15 +6,18 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/SENSOR/LM35.c \
-../Core/SENSOR/LM393.c 
+../Core/SENSOR/LM393.c \
+../Core/SENSOR/SENSOR.c 
 
 OBJS += \
 ./Core/SENSOR/LM35.o \
-./Core/SENSOR/LM393.o 
+./Core/SENSOR/LM393.o \
+./Core/SENSOR/SENSOR.o 
 
 C_DEPS += \
 ./Core/SENSOR/LM35.d \
-./Core/SENSOR/LM393.d 
+./Core/SENSOR/LM393.d \
+./Core/SENSOR/SENSOR.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +27,7 @@ Core/SENSOR/%.o Core/SENSOR/%.su Core/SENSOR/%.cyclo: ../Core/SENSOR/%.c Core/SE
 clean: clean-Core-2f-SENSOR
 
 clean-Core-2f-SENSOR:
-	-$(RM) ./Core/SENSOR/LM35.cyclo ./Core/SENSOR/LM35.d ./Core/SENSOR/LM35.o ./Core/SENSOR/LM35.su ./Core/SENSOR/LM393.cyclo ./Core/SENSOR/LM393.d ./Core/SENSOR/LM393.o ./Core/SENSOR/LM393.su
+	-$(RM) ./Core/SENSOR/LM35.cyclo ./Core/SENSOR/LM35.d ./Core/SENSOR/LM35.o ./Core/SENSOR/LM35.su ./Core/SENSOR/LM393.cyclo ./Core/SENSOR/LM393.d ./Core/SENSOR/LM393.o ./Core/SENSOR/LM393.su ./Core/SENSOR/SENSOR.cyclo ./Core/SENSOR/SENSOR.d ./Core/SENSOR/SENSOR.o ./Core/SENSOR/SENSOR.su
 
 .PHONY: clean-Core-2f-SENSOR
 
