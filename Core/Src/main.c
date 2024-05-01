@@ -50,7 +50,7 @@ DMA_HandleTypeDef hdma_adc1;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-
+unit16_t a[2];//
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -113,6 +113,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  HAL_ADC_Start_DMA(&hadc1,(uint16_t*)a,2);
 	 temperature = LM35_ReadTemperature();
 	 humidity = LM393_ReadHumidity();
   }
