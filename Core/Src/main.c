@@ -118,6 +118,7 @@ int main(void)
 	  HAL_ADC_Start_DMA(&hadc1,(uint16_t*)a,2);
 	 temperature = LM35_ReadTemperature();
 	 humidity = LM393_ReadHumidity();
+	  HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
