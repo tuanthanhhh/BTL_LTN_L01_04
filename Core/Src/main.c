@@ -51,6 +51,8 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 unit16_t a[2];//
+	float temperature ;
+	float humidity ;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
