@@ -1,4 +1,4 @@
 ../Core/SENSOR/SENSOR.c:8:6:adc_Init	1
-../Core/SENSOR/SENSOR.c:12:8:read_sensor	1
-../Core/SENSOR/SENSOR.c:20:7:get_Temperature	1
-../Core/SENSOR/SENSOR.c:27:7:get_Humidity	1
+../Core/SENSOR/SENSOR.c:12:6:read_sensor	1
+../Core/SENSOR/SENSOR.c:17:7:get_Temperature	1
+../Core/SENSOR/SENSOR.c:25:7:get_Humidity	1

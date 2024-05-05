@@ -51,8 +51,8 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 //  uint16_t a[2];
-//	float temperature ;
-//	float humidity ;
+	float temperature ;
+	float humidity ;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,6 +109,7 @@ int main(void)
   lcd_clear();
   lcd_cursor(1, 0);
   lcd_string("Hello World!");
+  read_sensor();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -116,7 +117,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	humidity = get_Humidity();
+	temperature = get_Temperature();
     /* USER CODE BEGIN 3 */
 //	 HAL_ADC_Start_DMA(&hadc1,(uint16_t*)a,2);
 //	 temperature = LM35_ReadTemperature();

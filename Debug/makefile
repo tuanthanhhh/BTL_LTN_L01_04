@@ -66,8 +66,8 @@ all: main-build
 main-build: BTL_LTN_L01_04.elf secondary-outputs
 
 # Tool invocations
-BTL_LTN_L01_04.elf BTL_LTN_L01_04.map: $(OBJS) $(USER_OBJS) D:\project-stm32\BTL_LTN_L01_04\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "BTL_LTN_L01_04.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\project-stm32\BTL_LTN_L01_04\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BTL_LTN_L01_04.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+BTL_LTN_L01_04.elf BTL_LTN_L01_04.map: $(OBJS) $(USER_OBJS) C:\Users\LE\ TUAN\ THANH\STM32CubeIDE\workspace_1.13.1\BTL_LTN_L01_04\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "BTL_LTN_L01_04.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\LE TUAN THANH\STM32CubeIDE\workspace_1.13.1\BTL_LTN_L01_04\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BTL_LTN_L01_04.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
