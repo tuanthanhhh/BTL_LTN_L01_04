@@ -4,8 +4,8 @@
 
 #define LCD_RS_PIN 		GPIO_PIN_9
 #define LCD_RS_PORT 	GPIOB
-#define LCD_RW_PIN 		GPIO_PIN_10
-#define LCD_RW_PORT 	GPIOB
+//#define LCD_RW_PIN 		GPIO_PIN_10
+//#define LCD_RW_PORT 		GPIOB
 #define LCD_EN_PIN 		GPIO_PIN_11
 #define LCD_EN_PORT 	GPIOB
 #define D4_PIN 			GPIO_PIN_12
@@ -30,6 +30,7 @@ void send_to_lcd (char data, int rs)
 	HAL_GPIO_WritePin(D7_PORT, D7_PIN, (data>>3)&0x01);
 
 	HAL_GPIO_WritePin(LCD_EN_PORT, LCD_EN_PIN, 1);
+	HAL_Delay(5);//
 	HAL_GPIO_WritePin(LCD_EN_PORT, LCD_EN_PIN, 0);
 }
 
@@ -39,7 +40,7 @@ void lcd_cmd(char cmd)
 	datagui = ((cmd>>4)&0x0f);
 	send_to_lcd(datagui, 0);
 
-	HAL_Delay(5);
+	HAL_Delay(5);//
 	datagui = ((cmd)&0x0f);
 	send_to_lcd(datagui, 0);
 }
@@ -49,6 +50,7 @@ void lcd_data(char data)
 	char datagui;
 	datagui = ((data>>4)&0x0f);
 	send_to_lcd(datagui, 1);
+	HAL_Delay(5);
 	datagui = ((data)&0x0f);
 	send_to_lcd(datagui, 1);
 }

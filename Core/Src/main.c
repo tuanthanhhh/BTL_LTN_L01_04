@@ -50,9 +50,9 @@ DMA_HandleTypeDef hdma_adc1;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-unit16_t a[2];//
-	float temperature ;
-	float humidity ;
+//  uint16_t a[2];
+//	float temperature ;
+//	float humidity ;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -77,8 +77,8 @@ static void MX_ADC1_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	float temperature = 0;
-	float humidity = 0;
+//	float temperature = 0;
+//	float humidity = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -106,6 +106,9 @@ int main(void)
   LM35_Init(&hadc1);
   LM393_Init(&hadc1);
   lcd_init();
+  lcd_clear();
+  lcd_cursor(1, 0);
+  lcd_string("Hello World!");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,10 +118,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_ADC_Start_DMA(&hadc1,(uint16_t*)a,2);
-	 temperature = LM35_ReadTemperature();
-	 humidity = LM393_ReadHumidity();
-	  HAL_Delay(500);
+//	 HAL_ADC_Start_DMA(&hadc1,(uint16_t*)a,2);
+//	 temperature = LM35_ReadTemperature();
+//	 humidity = LM393_ReadHumidity();
+//	 HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
