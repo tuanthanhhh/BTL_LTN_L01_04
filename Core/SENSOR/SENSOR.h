@@ -10,9 +10,9 @@
 #include "stm32f1xx_hal.h"
 
 void adc_Init(ADC_HandleTypeDef *hadc);
-float* read_sensor(void);
-float get_Temperature(int adc_value);
-float get_Humidity(int adc_value);
+void read_sensor(void);
+float get_Temperature();
+float get_Humidity();
 
 
 #endif /* SENSOR_SENSOR_H_ */

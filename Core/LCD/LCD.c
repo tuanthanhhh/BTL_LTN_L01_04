@@ -49,8 +49,10 @@ void lcd_data(char data)
 	char datagui;
 	datagui = ((data>>4)&0x0f);
 	send_to_lcd(datagui, 1);
+	HAL_Delay(5);
 	datagui = ((data)&0x0f);
 	send_to_lcd(datagui, 1);
+	HAL_Delay(5);
 }
 
 void lcd_clear(void)

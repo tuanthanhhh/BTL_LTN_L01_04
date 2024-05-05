@@ -104,6 +104,10 @@ int main(void)
   LM35_Init(&hadc1);
   LM393_Init(&hadc1);
   lcd_init();
+  lcd_clear();
+  lcd_cursor(0, 5);
+  lcd_string("hello");
+  read_sensor();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,10 +115,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  temperature = get_Temperature();
+	  humidity = get_Humidity();
     /* USER CODE BEGIN 3 */
-	 temperature = LM35_ReadTemperature();
-	 humidity = LM393_ReadHumidity();
   }
   /* USER CODE END 3 */
 }
